@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <table>
+        
+        <thead>
+            <tr>
+                <th>Nº serie</th>
+                <th>Nombre</th>
+                <th>Fecha adquisición</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for obj in object_list %}
+            <tr>
+                <td>{{obj.num_serie}}</td>
+                <td>{{obj.nombre}}</td>
+                <td>{{obj.fecha_adquisicion}}</td>
+                <td>{{obj.estado}}</td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+
+    
+</body>
+</html>
