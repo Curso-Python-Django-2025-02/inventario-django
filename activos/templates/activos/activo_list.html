@@ -1,13 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-    <table>
+{% block titulo %}Listado de activos{% endblock %}
+
+{% block contenido %}
+
+    <table class="table">
         
         <thead>
             <tr>
@@ -20,16 +17,15 @@
         <tbody>
             {% for obj in object_list %}
             <tr>
-                <td>{{obj.num_serie}}</td>
+                <td>
+                    <a href="{% url 'activos:detail' obj.id %}">{{obj.num_serie}}</a>
+                </td>
                 <td>{{obj.nombre}}</td>
                 <td>{{obj.fecha_adquisicion}}</td>
-                <td>{{obj.estado}}</td>
+                <td>{{obj.get_estado_display}}</td>
             </tr>
             {% endfor %}
 
         </tbody>
     </table>
-
-    
-</body>
-</html>
+{% endblock %}
