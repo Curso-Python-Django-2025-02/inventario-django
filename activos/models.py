@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 class Activo(models.Model):
@@ -21,6 +22,9 @@ class Activo(models.Model):
 
     def __str__(self):
         return f"{self.nombre} ({self.num_serie})"
+    
+    def get_absolute_url(self):
+        return reverse('activos:detail', kwargs={'pk': self.pk})
 
 
 class Etiqueta(models.Model):

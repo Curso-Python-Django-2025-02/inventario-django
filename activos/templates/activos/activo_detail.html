@@ -8,4 +8,8 @@
     <p>Fecha de adquisición: {{object.fecha_adquisicion}}</p>
     <p>Estado: {{object.get_estado_display}}</p>
     <p>Valor: {{object.valor}}</p>
+
+    <a href="{% url 'activos:editar' object.id %}" class="btn btn-primary">Editar</a>
+    <a href="{% url 'activos:eliminar' object.id %}" class="btn btn-danger">Eliminar</a>
 {% endblock %}
+

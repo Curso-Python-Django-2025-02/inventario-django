@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block titulo %}{{ object }}{% endblock %}
+
+{% block contenido %}
+
+    <form class="form" action="" method="post">
+        {{form}}
+        {% csrf_token %}
+
+        <button class="btn btn-success" type="submit">Guardar</button>
+
+        {{form.errors}}
+    </form>
+    
+{% endblock %}
