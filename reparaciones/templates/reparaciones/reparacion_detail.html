@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block titulo %}{{object}}{% endblock %}
+
+{% block contenido %}
+
+<p>
+    <strong>Activo:</strong> {{object.activo}}
+</p>
+<p>
+    <strong>Fecha:</strong> {{object.fecha}}
+</p>
+<p>
+    <strong>Importe:</strong> {{object.costo}}
+</p>
+<p>
+    <strong>Descripción:</strong> {{object.descripcion}}
+</p>
+
+
+{% endblock %}

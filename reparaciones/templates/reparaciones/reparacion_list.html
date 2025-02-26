@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Listado de reparaciones{% endblock %}
+
+{% block contenido %}
+
+    <form class="form" action="" method="get">
+        {% for field in form %}
+            <div class="form-group">
+                {{field.label_tag}}
+                {{field}}
+            </div>
+        {% endfor %}
+        <button class="btn btn-success" type="submit">Buscar</button>
+
+        {{form.errors}}
+    </form>
+
+    <a href="{% url 'reparaciones:crear' %}"  class="btn btn-primary">Añadir reparación</a>
+
+    <table class="table">
+         
+        <thead>
+            <tr>
+                <th>Reparación</th>
+                <th>Activo</th>
+                <th>Fecha</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for obj in object_list %}
+            <tr>
+                <td>
+                    #{{obj.pk}}
+                </td>
+                <td>{{obj.activo}}</td>
+                <td>{{obj.fecha}}</td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+
+{% endblock %}
