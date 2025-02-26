@@ -17,5 +17,7 @@
     <strong>Descripción:</strong> {{object.descripcion}}
 </p>
 
+<a href="{% url 'reparaciones:editar' object.id %}" class="btn btn-primary">Editar</a>
+<a href="{% url 'reparaciones:eliminar' object.id %}" class="btn btn-danger">Eliminar</a>
 
 {% endblock %}

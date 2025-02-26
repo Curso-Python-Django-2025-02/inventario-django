@@ -31,7 +31,7 @@
             {% for obj in object_list %}
             <tr>
                 <td>
-                    #{{obj.pk}}
+                    <a href="{% url 'reparaciones:detail' obj.pk %}">#{{obj.pk}}</a>
                 </td>
                 <td>{{obj.activo}}</td>
                 <td>{{obj.fecha}}</td>

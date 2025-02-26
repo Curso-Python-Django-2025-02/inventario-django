@@ -9,7 +9,4 @@ urlpatterns = [
     path('crear/', ReparacionCreateView.as_view(), name='crear'),
     path('<int:pk>/editar/', ReparacionUpdateView.as_view(), name='editar'),
     path('<int:pk>/eliminar/', ReparacionDeleteView.as_view(), name='eliminar'),
-    # TODO: Añadir reparación
-    # TODO: Editar reparación
-    # TODO: Eliminar reparación
 ]

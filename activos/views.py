@@ -1,9 +1,11 @@
+from django.http import HttpResponseForbidden
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.urls import reverse_lazy
 from activos.forms import ActivoFilterForm
 from activos.models import Activo
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 
 # Create your views here.
 class ActivoListView(ListView):
@@ -35,14 +37,31 @@ class ActivoListView(ListView):
 class ActivoDetailView(DetailView):
     model = Activo
     
-class ActivoCreateView(CreateView):
+class ActivoCreateView(LoginRequiredMixin, CreateView):
     model = Activo
     fields = '__all__'
 
-class ActivoUpdateView(UpdateView):
+    def get(self, request, *args, **kwargs):
+        user = request.user
+        if user.is_authenticated and user.has_perm('activos.add_activo'):
+            return super().get(request, *args, **kwargs)
+        else:
+            return HttpResponseForbidden('No tienes permiso para crear activos')
+
+    def post(self, request, *args, **kwargs):
+        user = request.user
+        if user.is_authenticated and user.has_perm('activos.add_activo'):
+            return super().post(request, *args, **kwargs)
+        else:
+            return HttpResponseForbidden('No tienes permiso para crear activos')
+
+
+
+class ActivoUpdateView(PermissionRequiredMixin, UpdateView):
     model = Activo
     fields = '__all__'
+    permission_required = 'activos.change_activo'
 
-class ActivoDeleteView(DeleteView):
+class ActivoDeleteView(LoginRequiredMixin, DeleteView):
     model = Activo
     success_url = reverse_lazy('activos:index')

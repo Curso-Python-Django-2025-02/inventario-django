@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Listado de reparaciones de {{activo}}{% endblock %}
+
+{% block contenido %}
+
+    <h2>Reparaciones de {{activo}}</h2>
+
+    <table class="table">
+         
+        <thead>
+            <tr>
+                <th>Reparación</th>
+                <th>Activo</th>
+                <th>Fecha</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for obj in object_list %}
+            <tr>
+                <td>
+                    #{{obj.pk}}
+                </td>
+                <td>{{obj.activo}}</td>
+                <td>{{obj.fecha}}</td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+
+{% endblock %}
