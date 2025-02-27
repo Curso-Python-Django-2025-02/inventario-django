@@ -1,0 +1,6 @@
+{{ formset.management_form }}
+{% for form in formset %}
+
+<h4>{{verbose_name|default:""}} #{{forloop.counter}}</h4>
+{{ form }}
+{% endfor %}

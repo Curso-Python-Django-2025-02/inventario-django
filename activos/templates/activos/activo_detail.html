@@ -9,6 +9,12 @@
     <p>Estado: {{object.get_estado_display}}</p>
     <p>Valor: {{object.valor}}</p>
 
+    {% if object.foto %}
+    <img src="{{object.foto.url}}" alt="{{object}}">
+    {% else %}
+    <p>(No tiene foto)</p>
+    {% endif %}
+
     <a href="{% url 'activos:editar' object.id %}" class="btn btn-primary">Editar</a>
     <a href="{% url 'activos:eliminar' object.id %}" class="btn btn-danger">Eliminar</a>
 {% endblock %}

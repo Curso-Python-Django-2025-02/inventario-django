@@ -35,7 +35,7 @@
                     <a href="{% url 'activos:detail' obj.id %}">{{obj.num_serie}}</a>
                 </td>
                 <td>{{obj.nombre}}</td>
-                <td>{{obj.fecha_adquisicion}}</td>
+                <td>{{obj.fecha_adquisicion|date:"d/m/Y"}}</td>
                 <td>{{obj.get_estado_display}}</td>
             </tr>
             {% endfor %}

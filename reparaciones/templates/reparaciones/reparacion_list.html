@@ -25,6 +25,7 @@
                 <th>Reparación</th>
                 <th>Activo</th>
                 <th>Fecha</th>
+                <th>Descripción</th>
             </tr>
         </thead>
         <tbody>
@@ -34,7 +35,8 @@
                     <a href="{% url 'reparaciones:detail' obj.pk %}">#{{obj.pk}}</a>
                 </td>
                 <td>{{obj.activo}}</td>
-                <td>{{obj.fecha}}</td>
+                <td>{{obj.fecha|date}}</td>
+                <td>{{obj.descripcion|truncatechars:20}}</td>
             </tr>
             {% endfor %}
 

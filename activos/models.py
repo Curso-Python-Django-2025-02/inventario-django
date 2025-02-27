@@ -19,6 +19,7 @@ class Activo(models.Model):
                               choices=Estados, default=Estados.ACTIVO)
     ubicacion = models.ForeignKey('Ubicacion', on_delete=models.PROTECT)
     etiquetas = models.ManyToManyField('Etiqueta')
+    foto = models.ImageField(upload_to='activos_fotos', null=True, blank=True)
 
     def __str__(self):
         return f"{self.nombre} ({self.num_serie})"
