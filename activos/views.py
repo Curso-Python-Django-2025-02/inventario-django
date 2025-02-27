@@ -4,8 +4,13 @@ from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.urls import reverse_lazy
 from activos.forms import ActivoFilterForm
-from activos.models import Activo
+from activos.models import Activo, Ubicacion
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+
+from rest_framework import viewsets
+
+from activos.serializers import ActivoSerializer, UbicacionSerializer
+from rest_framework import permissions
 
 # Create your views here.
 class ActivoListView(ListView):
@@ -65,3 +70,15 @@ class ActivoUpdateView(PermissionRequiredMixin, UpdateView):
 class ActivoDeleteView(LoginRequiredMixin, DeleteView):
     model = Activo
     success_url = reverse_lazy('activos:index')
+
+
+# Vistas de API REST
+class ActivoViewSet(viewsets.ModelViewSet):
+    queryset = Activo.objects.all()
+    serializer_class = ActivoSerializer
+    permission_classes = [permissions.DjangoModelPermissions]
+
+class UbicacionViewSet(viewsets.ModelViewSet):
+    queryset = Ubicacion.objects.all()
+    serializer_class = UbicacionSerializer
+    permission_classes = [permissions.IsAuthenticated]
